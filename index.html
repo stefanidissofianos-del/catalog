@@ -41,41 +41,43 @@
       margin-bottom: 16px;
     }
 
-    .logo-box {
+    /* LOGO στυλ κάρτας – ψηφιακή “κάψουλα” */
+    .logo-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 18px;
+      padding: 10px 32px;
       border-radius: 999px;
-      border: 1px solid var(--olive-border);
-      background: radial-gradient(circle at top, #f6efe4 0, #efe4d2 40%, #e3d4bf 100%);
-      margin-bottom: 6px;
+      border: 1px solid #bcc89c;
+      background: radial-gradient(circle at 0% 0%, #f7efe1 0, #efe4d2 45%, #e4d5c1 100%);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.10);
+      column-gap: 14px;
     }
 
-    .logo-box span.line1 {
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
+    .logo-pill .kantina {
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--olive-dark);
+      color: #6b6a55;
     }
 
-    .logo-box span.line2 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin: 0 10px;
+    .logo-pill .nikos {
       font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #222222;
     }
 
-    .logo-box span.line3 {
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
+    .logo-pill .year {
+      font-size: 0.82rem;
+      letter-spacing: 0.20em;
       text-transform: uppercase;
-      color: var(--olive-dark);
+      color: #6b6a55;
     }
 
     header h1 {
       font-size: 1.3rem;
-      margin-top: 8px;
+      margin-top: 10px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--olive-dark);
@@ -107,7 +109,7 @@
       color: var(--olive-dark);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .section-subtitle {
@@ -119,7 +121,7 @@
     .item {
       padding: 8px 8px 9px 8px;
       border-radius: 10px;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.9);
       margin-bottom: 8px;
     }
 
@@ -182,6 +184,15 @@
       header h1 {
         font-size: 1.1rem;
       }
+
+      .logo-pill {
+        padding: 8px 20px;
+        column-gap: 10px;
+      }
+
+      .logo-pill .nikos {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
@@ -189,15 +200,16 @@
 
   <div class="menu-wrapper">
     <header>
-      <!-- Αν έχεις εικόνα λογότυπο, βάλε:
-      <img src="logo.png" alt="Kantina Nikos" style="max-height:90px;margin-bottom:6px;">
-      και αφαίρεσε το div .logo-box
+      <!-- Αν κάποια στιγμή έχεις έτοιμο PNG/SVG logo,
+           μπορείς να αντικαταστήσεις όλο το .logo-pill με:
+           <img src="onoma-logo.png" alt="Kantina Nikos" style="max-height:90px;margin-bottom:6px;">
       -->
-      <div class="logo-box">
-        <span class="line1">KANTINA</span>
-        <span class="line2">Nikos</span>
-        <span class="line3">1976</span>
+      <div class="logo-pill">
+        <span class="kantina">KANTINA</span>
+        <span class="nikos">Nikos</span>
+        <span class="year">1976</span>
       </div>
+
       <h1>MENU</h1>
       <p>19ης Μαΐου 79, Δράμα • Τηλ: 25210 31711</p>
     </header>
