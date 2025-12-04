@@ -3,102 +3,373 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Κατάλογος</title>
+  <title>Kantina Nikos – Menu</title>
   <style>
-    body { font-family: Arial, Helvetica, sans-serif; margin:0; padding:20px; background:#f7f7f7; color:#222; }
-    h1 { text-align:center; margin-bottom:25px; }
-    h2 { margin-top:30px; color:#444; }
-    .item { background:white; padding:12px 14px; margin:10px 0; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
-    .title { font-weight:700; font-size:1.05em; }
-    .subtitle { font-size:0.9em; color:#555; }
-    .price { font-weight:700; color:#1a7bff; margin-top:4px; }
+    :root {
+      --olive-light: #d8e2c4;
+      --olive-border: #b9c79a;
+      --olive-dark: #4e5b30;
+      --text-main: #222222;
+      --text-muted: #555555;
+      --bg-page: #f7f7f3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      padding: 16px;
+    }
+
+    .menu-wrapper {
+      max-width: 960px;
+      margin: 0 auto 40px auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      padding: 24px 18px 28px 18px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .logo-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--olive-border);
+      background: radial-gradient(circle at top, #f6efe4 0, #efe4d2 40%, #e3d4bf 100%);
+      margin-bottom: 6px;
+    }
+
+    .logo-box span.line1 {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--olive-dark);
+    }
+
+    .logo-box span.line2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin: 0 10px;
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    .logo-box span.line3 {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--olive-dark);
+    }
+
+    header h1 {
+      font-size: 1.3rem;
+      margin-top: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--olive-dark);
+    }
+
+    header p {
+      margin-top: 4px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .sections {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .section {
+      background: var(--olive-light);
+      border-radius: 18px;
+      border: 1px solid var(--olive-border);
+      padding: 14px 14px 10px 14px;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--olive-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .item {
+      padding: 8px 8px 9px 8px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.85);
+      margin-bottom: 8px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .item-name-el {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--olive-dark);
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+
+    .item-translations {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .lang-tag {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      margin-right: 4px;
+      color: var(--olive-dark);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #777777;
+      margin-top: 14px;
+    }
+
+    footer .contact {
+      margin-top: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .menu-wrapper {
+        padding: 18px 12px 22px 12px;
+      }
+
+      .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      header h1 {
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-<h1>ΚΑΤΑΛΟΓΟΣ</h1>
+  <div class="menu-wrapper">
+    <header>
+      <!-- Αν έχεις εικόνα λογότυπο, βάλε:
+      <img src="logo.png" alt="Kantina Nikos" style="max-height:90px;margin-bottom:6px;">
+      και αφαίρεσε το div .logo-box
+      -->
+      <div class="logo-box">
+        <span class="line1">KANTINA</span>
+        <span class="line2">Nikos</span>
+        <span class="line3">1976</span>
+      </div>
+      <h1>MENU</h1>
+      <p>19ης Μαΐου 79, Δράμα • Τηλ: 25210 31711</p>
+    </header>
 
-<h2>Σάντουιτς</h2>
+    <main class="sections">
 
-<div class="item">
-  <div class="title">Σάντουιτς με λουκάνικο (2τμχ)</div>
-  <div class="subtitle">Sandwich with sausage (2 pcs)</div>
-  <div class="price">3,80€</div>
-</div>
+      <!-- ΣΑΝΤΟΥΙΤΣ -->
+      <section class="section">
+        <div class="section-title">Σάντουιτς / Sandwiches / Сандвичи</div>
 
-<div class="item">
-  <div class="title">Σάντουιτς με σουτζουκάκια (3 τμχ)</div>
-  <div class="subtitle">Sandwich with meatballs (3 pcs)</div>
-  <div class="price">3,80€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Σάντουιτς με λουκάνικο (2τμχ)</div>
+            <div class="price">3,80€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Sandwich with sausage (2 pcs)</div>
+            <div><span class="lang-tag">BG</span>Сандвич с наденица (2 бр.)</div>
+          </div>
+        </div>
 
-<div class="item">
-  <div class="title">Σάντουιτς με χοιρινό σουβλάκι (2τμχ)</div>
-  <div class="subtitle">Sandwich with pork souvlaki (2 pcs)</div>
-  <div class="price">3,80€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Σάντουιτς με σουτζουκάκια (3 τμχ)</div>
+            <div class="price">3,80€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Sandwich with meatballs (3 pcs)</div>
+            <div><span class="lang-tag">BG</span>Сандвич с кюфтета (3 бр.)</div>
+          </div>
+        </div>
 
-<div class="item">
-  <div class="title">Σάντουιτς με κοτοσουβλάκι</div>
-  <div class="subtitle">Sandwich with chicken souvlaki</div>
-  <div class="price">3,80€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Σάντουιτς με χοιρινό σουβλάκι (2τμχ)</div>
+            <div class="price">3,80€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Sandwich with pork souvlaki (2 pcs)</div>
+            <div><span class="lang-tag">BG</span>Сандвич със свински шиш (2 бр.)</div>
+          </div>
+        </div>
 
-<div class="item">
-  <div class="title">*Σαλάτες (sos)</div>
-  <div class="subtitle">+0,20€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Σάντουιτς με κοτοσουβλάκι</div>
+            <div class="price">3,80€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Sandwich with chicken souvlaki</div>
+            <div><span class="lang-tag">BG</span>Сандвич с пилешки шиш</div>
+          </div>
+        </div>
 
-<h2>Μερίδες (ντομάτα, κρεμμύδι, αλοιφή, πίτα)</h2>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">*Σαλάτες (sos)</div>
+            <div class="price">+0,20€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Sauces +0.20€</div>
+            <div><span class="lang-tag">BG</span>Сосове +0.20€</div>
+          </div>
+        </div>
+      </section>
 
-<div class="item">
-  <div class="title">Μερίδα με λουκάνικο (4 τμχ)</div>
-  <div class="subtitle">Portion with sausage (4 pcs)</div>
-  <div class="price">7,00€</div>
-</div>
+      <!-- ΜΕΡΙΔΕΣ -->
+      <section class="section">
+        <div class="section-title">Μερίδες / Portions / Порции</div>
+        <div class="section-subtitle">(ντομάτα, κρεμμύδι, αλοιφή, πίτα)</div>
 
-<div class="item">
-  <div class="title">Μερίδα με σουτζουκάκια (6 τμχ)</div>
-  <div class="subtitle">Portion with meatballs (6 pcs)</div>
-  <div class="price">7,00€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Μερίδα με λουκάνικο (4τμχ)</div>
+            <div class="price">7,00€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Portion with sausage (4 pcs)</div>
+            <div><span class="lang-tag">BG</span>Порция с наденица (4 бр.)</div>
+          </div>
+        </div>
 
-<div class="item">
-  <div class="title">Μερίδα με χοιρινό σουβλάκι (4 τμχ)</div>
-  <div class="subtitle">Portion with pork souvlaki (4 pcs)</div>
-  <div class="price">7,00€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Μερίδα με σουτζουκάκια (6τμχ)</div>
+            <div class="price">7,00€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Portion with meatballs (6 pcs)</div>
+            <div><span class="lang-tag">BG</span>Порция с кюфтета (6 бр.)</div>
+          </div>
+        </div>
 
-<div class="item">
-  <div class="title">Μερίδα με κοτοσουβλάκι (2 τμχ)</div>
-  <div class="subtitle">Portion with chicken souvlaki (2 pcs)</div>
-  <div class="price">7,00€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Μερίδα με χοιρινό σουβλάκι (4τμχ)</div>
+            <div class="price">7,00€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Portion with pork souvlaki (4 pcs)</div>
+            <div><span class="lang-tag">BG</span>Порция със свински шиш (4 бр.)</div>
+          </div>
+        </div>
 
-<h2>Burgers</h2>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Μερίδα με κοτοσουβλάκι (2τμχ)</div>
+            <div class="price">7,00€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Portion with chicken souvlaki (2 pcs)</div>
+            <div><span class="lang-tag">BG</span>Порция с пилешки шиш (2 бр.)</div>
+          </div>
+        </div>
+      </section>
 
-<div class="item">
-  <div class="title">Μπέργκερ απλό</div>
-  <div class="subtitle">Simple burger (tomato, onion, sauce, ketchup, mustard)</div>
-  <div class="price">3,50€</div>
-</div>
+      <!-- BURGERS -->
+      <section class="section">
+        <div class="section-title">Burgers / Бургери</div>
 
-<div class="item">
-  <div class="title">Cheeseburger</div>
-  <div class="price">4,00€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Μπέργκερ απλό</div>
+            <div class="price">3,50€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Simple burger (tomato, onion, sauce, ketchup, mustard)</div>
+            <div><span class="lang-tag">BG</span>Обикновен бургер (домати, лук, сос, кетчуп, горчица)</div>
+          </div>
+        </div>
 
-<div class="item">
-  <div class="title">Μπέργκερ με πατάτες</div>
-  <div class="subtitle">Burger with fries</div>
-  <div class="price">4,50€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Cheeseburger</div>
+            <div class="price">4,00€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Cheeseburger</div>
+            <div><span class="lang-tag">BG</span>Чийзбургер</div>
+          </div>
+        </div>
 
-<div class="item">
-  <div class="title">Cheeseburger με πατάτες</div>
-  <div class="subtitle">Cheeseburger with fries</div>
-  <div class="price">5,00€</div>
-</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Μπέργκερ με πατάτες</div>
+            <div class="price">4,50€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Burger with fries</div>
+            <div><span class="lang-tag">BG</span>Бургер с пържени картофи</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <div class="item-name-el">Cheeseburger με πατάτες</div>
+            <div class="price">5,00€</div>
+          </div>
+          <div class="item-translations">
+            <div><span class="lang-tag">EN</span>Cheeseburger with fries</div>
+            <div><span class="lang-tag">BG</span>Чийзбургер с пържени картофи</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© Kantina Nikos 1976</div>
+      <div class="contact">19ης Μαΐου 79, Δράμα • Τηλ: 25210 31711</div>
+    </footer>
+  </div>
 
 </body>
 </html>
